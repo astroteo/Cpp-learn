@@ -1,0 +1,64 @@
+vtkSmartPointer<vtkAnimationScene> scene =
+                                    vtkSmartPointer<vtkAnimationScene>::New();
+
+cout << "sequence mode" << endl;
+scene->SetModeToSequence();
+//scene->SetModeToRealTime();
+scene->SetLoop(0);
+scene->SetFrameRate(5);
+scene->SetStartTime(0);
+scene->SetEndTime(20);
+//iren->Start();
+
+vtkSmartPointer<AnimationSceneObserver> scene_observer =
+                                         vtkSmartPointer<AnimationSceneObserver>::New();
+scene_observer->SetRenderWindow(window);
+scene->AddObserver(vtkCommand::AnimationCueTickEvent, scene_observer);
+
+/* render trajectory */
+vtkSmartPointer<vtkAnimationCue> cue =
+                                  vtkSmartPointer<vtkAnimationCue>::New();
+cue->SetStartTime(1);
+cue->SetEndTime(10000);
+scene->AddCue(cue);
+
+/*Create an ActorAnimator for each actor*/;
+ActorAnimator animate_sat;
+animate_sat.SetActor(sat_actor);
+animate_sat.AddObserversToCue(cue);
+
+animate_sat.SetStartPosition(trajectory[0]);
+//state_type fx = {trajectory[1][0] +10,trajectory[1][0] +10,0};
+//animate_sat.SetEndPosition( fx);
+animate_sat.SetEndPosition(trajectory[trajectory.size()-1]);
+
+
+for (auto p : trajectory)
+{
+  cout << p[0] << " , "<< p[1] << " , "<< p[2]<< endl;
+
+  sat_actor->SetPosition(p[0], p[1],p[2]);
+  vtkSmartPointer<vtkSphereSource> pt =
+                                        vtkSmartPointer<vtkSphereSource>::New();
+  pt->SetRadius(.02);
+
+  vtkSmartPointer<vtkActor> pt_actor =
+                                     vtkSmartPointer<vtkActor>::New();
+
+  pt_actor->SetMapper(sat_mapper);
+  pt_actor->SetPosition(p[0],p[1],p[2]);
+
+  renderer->AddActor(pt_actor);
+
+
+
+  //renderer->Render();
+
+ }
+ cout <<"DDDOOONNE"<<endl;
+
+
+ scene->Play();
+ scene->Stop();
+
+ iren->Start();

@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/teobaiguera/Dropbox/Cpp_Db/Cpp_CMake_tutorial/src/main.cpp
+stdio.h
+-
+stdlib.h
+-
+math.h
+-
+iostream
+-
+eigen3/Eigen/Dense
+-
+

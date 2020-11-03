@@ -1,0 +1,3 @@
+/Users/teobaiguera/Dropbox/Cpp_Db/Cpp_CMake_tutorial/CMakeFiles/rebuild_cache.dir
+/Users/teobaiguera/Dropbox/Cpp_Db/Cpp_CMake_tutorial/CMakeFiles/edit_cache.dir
+/Users/teobaiguera/Dropbox/Cpp_Db/Cpp_CMake_tutorial/CMakeFiles/sample.dir
