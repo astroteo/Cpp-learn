@@ -110,7 +110,6 @@ int main(int argc, const char * argv[]){
   cout << "after plus1Ref:  x = "<<x <<endl;
 
   plus1Point(&x);
-
   cout << "after plus1Point:  x = "<<x <<endl;
 
 
